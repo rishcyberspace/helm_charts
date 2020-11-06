@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+ name: transaction-configmap
+data:
+ name: "Sanjoli"
+ designation: "ASE"
+ Organization: "Accenture"
+ application.properties: /
+  management.endpoint.health.enabled=true
+  management.endpoint.health.show-details=always

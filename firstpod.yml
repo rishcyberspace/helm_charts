@@ -1,0 +1,44 @@
+apiVersion: v1
+kind: Pod
+metadata: 
+  name: transaction-service-app
+spec: 
+  containers: 
+    - 
+      env: 
+        - 
+          name: DB_USERNAME
+          valueFrom: 
+            secretKeyRef: 
+              key: DB_USERNAME
+              name: transaction-db-secret
+        - 
+          name: DB_PASSWORD
+          valueFrom: 
+            secretKeyRef: 
+              key: DB_PASSWORD
+              name: transaction-db-secret
+        - 
+          name: CONFIG_name
+          valueFrom: 
+            configMapKeyRef: 
+              key: name
+              name: transaction-configmap
+        - 
+          name: CONFIG_designation
+          valueFrom: 
+            configMapKeyRef: 
+              key: designation
+              name: transaction-configmap
+        - 
+          name: CONFIG_organization
+          valueFrom: 
+            configMapKeyRef: 
+              key: Organization
+              name: transaction-configmap
+      image: "samya123/transactionservices:0.0.7-SNAPSHOT"
+      name: transaction-service-app
+      ports: 
+        - 
+          containerPort: 8088
+
